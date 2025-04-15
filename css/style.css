@@ -1256,12 +1256,17 @@ body.menu-open {
   gap: 0.3125rem;
 }
 .pagination__button {
-  background-color: #ff7a49;
-  color: #f6f6f6;
+  background-color: #f6f6f6;
+  color: #3c4242;
   font-size: 1.5625rem;
   padding: 0.625rem 0.9375rem;
   border-radius: 0.3125rem;
 }
+@media (any-hover: hover) {
+  .pagination__button:hover {
+    background-color: #ff7a49;
+  }
+}
 .pagination__button--current {
-  background-color: #a72c00;
+  background-color: #ff7a49;
 }

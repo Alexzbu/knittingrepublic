@@ -157,13 +157,18 @@
    // .pagination__button
 
    &__button {
-      background-color: $orangeColor;
-      color: $liteColor;
+      background-color: $liteColor;
+      color: $darkColor;
       font-size: toRem(25);
       padding: toRem(10) toRem(15);
       border-radius: toRem(5);
+      @media (any-hover: hover) {
+         &:hover {
+            background-color: $orangeColor;
+         }
+      }
       &--current {
-         background-color: #a72c00;
+         background-color: $orangeColor;
       }
    }
 }
