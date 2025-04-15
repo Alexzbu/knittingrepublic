@@ -22,7 +22,7 @@
          flex-shrink: 0;
          @include adaptiveValue("flex-basis", 63, 30);
          height: toRem(10);
-         background-color: $mainColor;
+         background-color: $orangeColor;
          opacity: 0.5;
          border-radius: 0;
          margin: 0;
@@ -128,10 +128,12 @@
 .products {
    // .products__container
    &__container {
+      > *:not(:last-child) {
+         @include adaptiveValue("margin-bottom", 40, 20);
+      }
    }
    // .products__title
    &__title {
-      @include adaptiveValue("margin-bottom", 30, 20);
    }
    // .products__items
    &__items {
@@ -144,6 +146,24 @@
       }
       @media (max-width: toEm(479.98)) {
          grid-template-columns: repeat(auto-fill, minmax(toRem(170), 1fr));
+      }
+   }
+}
+
+.pagination {
+   display: flex;
+   justify-content: center;
+   gap: toRem(5);
+   // .pagination__button
+
+   &__button {
+      background-color: $orangeColor;
+      color: $liteColor;
+      font-size: toRem(25);
+      padding: toRem(10) toRem(15);
+      border-radius: toRem(5);
+      &--current {
+         background-color: #a72c00;
       }
    }
 }

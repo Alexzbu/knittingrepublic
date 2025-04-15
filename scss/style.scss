@@ -54,6 +54,9 @@ body {
 	&__hero {
 		@include adaptiveValue("margin-bottom", 130, 40);
 	}
+	&__products {
+		@include adaptiveValue("margin-bottom", 130, 40);
+	}
 }
 
 // Сторінки

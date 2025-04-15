@@ -225,6 +225,7 @@ textarea {
 }
 
 .item-product {
+  overflow: hidden;
   position: relative;
   display: grid;
   gap: 1.875rem;
@@ -234,6 +235,8 @@ textarea {
 }
 .item-product__picture-link {
   display: block;
+  overflow: hidden;
+  border-radius: 0.625rem;
 }
 .item-product__image {
   aspect-ratio: 282/370;
@@ -241,7 +244,6 @@ textarea {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 0.625rem;
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -252,9 +254,9 @@ textarea {
 }
 @media (any-hover: hover) {
   .item-product__image:hover {
-    -webkit-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-            transform: scale(0.95);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
   }
 }
 .item-product__body {
@@ -328,10 +330,30 @@ textarea {
     color: red;
   }
 }
+.item-product__sale {
+  position: absolute;
+  top: 0.625rem;
+  left: 0;
+  color: #f6f6f6;
+  background-color: #ff7a49;
+  font-size: 1.875rem;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+}
+.item-product__new {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  color: #f6f6f6;
+  background-color: rgb(0, 170, 0);
+  font-size: 1.875rem;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+}
 .item-product__rating {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.625rem;
+  right: 0.625rem;
 }
 
 .button {
@@ -820,6 +842,28 @@ body.menu-open {
     margin-bottom: 2.5rem;
   }
 }
+@media (min-width: 79.375em) {
+  .page__products {
+    margin-bottom: 8.125rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 79.375em) {
+  @supports (margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem )) {
+    .page__products {
+      margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem )) {
+    .page__products {
+      margin-bottom: calc(2.5rem + 5.625 * (100vw - 20rem) / 59.375);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .page__products {
+    margin-bottom: 2.5rem;
+  }
+}
 
 .hero {
   position: relative;
@@ -868,7 +912,7 @@ body.menu-open {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   height: 0.625rem;
-  background-color: #807d7e;
+  background-color: #ff7a49;
   opacity: 0.5;
   border-radius: 0;
   margin: 0;
@@ -1135,24 +1179,24 @@ body.menu-open {
 }
 
 @media (min-width: 79.375em) {
-  .products__title {
-    margin-bottom: 1.875rem;
+  .products__container > *:not(:last-child) {
+    margin-bottom: 2.5rem;
   }
 }
 @media (min-width: 20em) and (max-width: 79.375em) {
-  @supports (margin-bottom: clamp( 1.25rem , 1.0394736842rem  +  1.0526315789vw , 1.875rem )) {
-    .products__title {
-      margin-bottom: clamp( 1.25rem , 1.0394736842rem  +  1.0526315789vw , 1.875rem );
+  @supports (margin-bottom: clamp( 1.25rem , 0.8289473684rem  +  2.1052631579vw , 2.5rem )) {
+    .products__container > *:not(:last-child) {
+      margin-bottom: clamp( 1.25rem , 0.8289473684rem  +  2.1052631579vw , 2.5rem );
     }
   }
-  @supports not (margin-bottom: clamp( 1.25rem , 1.0394736842rem  +  1.0526315789vw , 1.875rem )) {
-    .products__title {
-      margin-bottom: calc(1.25rem + 0.625 * (100vw - 20rem) / 59.375);
+  @supports not (margin-bottom: clamp( 1.25rem , 0.8289473684rem  +  2.1052631579vw , 2.5rem )) {
+    .products__container > *:not(:last-child) {
+      margin-bottom: calc(1.25rem + 1.25 * (100vw - 20rem) / 59.375);
     }
   }
 }
 @media (max-width: 20em) {
-  .products__title {
+  .products__container > *:not(:last-child) {
     margin-bottom: 1.25rem;
   }
 }
@@ -1200,4 +1244,24 @@ body.menu-open {
   .products__items {
     grid-template-columns: repeat(auto-fill, minmax(10.625rem, 1fr));
   }
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.3125rem;
+}
+.pagination__button {
+  background-color: #ff7a49;
+  color: #f6f6f6;
+  font-size: 1.5625rem;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.3125rem;
+}
+.pagination__button--current {
+  background-color: #a72c00;
 }
