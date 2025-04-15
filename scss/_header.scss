@@ -77,6 +77,9 @@
    // .logo__title
 
    &__title {
+      font-family: "Merriweather";
+      font-style: italic;
+      font-weight: 700;
       font-size: toRem(36);
    }
 
@@ -110,6 +113,7 @@
    }
    // .menu__item
    &__item {
+      // color: #291403;
    }
    // .menu__link
    &__link {

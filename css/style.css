@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @font-face {
   font-family: "Causten";
   src: url("../fonts/Causten-Regular.woff2") format("woff2"), url("../fonts/Causten-Regular.woff") format("woff");
@@ -335,6 +336,9 @@ textarea {
       justify-content: space-around;
 }
 .logo__title {
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 700;
   font-size: 2.25rem;
 }
 .menu {
