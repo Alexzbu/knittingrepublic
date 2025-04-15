@@ -1,0 +1,59 @@
+@use "sass:math";
+
+$minWidth: 320;
+$maxWidth: 1440;
+$maxWidthContainer: 1240;
+
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$mainColor: #807d7e;
+$darkColor: #3c4242;
+$orangeColor: #ff7a49;
+$liteColor: #f6f6f6;
+
+@import "_functions.scss";
+@import "_fonts.scss";
+// @import "_icons.scss";
+@import "_reset.scss";
+// @import "_common.scss";
+@import "_header.scss";
+// @import "_footer.scss";
+
+body {
+	font-family: "Causten";
+	color: $mainColor;
+	&.menu-open {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+}
+.wrapper {
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	@media (max-width: toEm(540)) {
+		padding-bottom: toRem(75);
+	}
+}
+.wrapper > main {
+	flex-grow: 1;
+}
+[class*="__container"] {
+	max-width: toRem(1270);
+	margin: 0 auto;
+	padding-left: toRem(15);
+	padding-right: toRem(15);
+}
+
+.page {
+	// .page__hero
+	&__hero {
+		@include adaptiveValue("margin-bottom", 130, 40);
+	}
+}
+
+// Сторінки
+@import "_home.scss";
