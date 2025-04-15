@@ -89,7 +89,7 @@
    // .item-product__price
    &__price-old,
    &__price {
-      align-self: center;
+      text-align: center;
       border-radius: toRem(8);
       background-color: $liteColor;
       padding: toRem(10) toRem(20);
@@ -125,6 +125,11 @@
             color: red;
          }
       }
+   }
+   &__rating {
+      position: absolute;
+      top: 10px;
+      right: 10px;
    }
 }
 // Button
@@ -222,7 +227,7 @@
       flex: 0 0 toRem(20);
       width: toRem(20);
       position: relative;
-      background: url("../img/icons/star.svg") 0 0 / toRem(20) no-repeat;
+      background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
       &.active {
          background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
       }
