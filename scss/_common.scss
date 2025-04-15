@@ -1,0 +1,275 @@
+// Заголовки
+.title {
+   font-weight: 600;
+   // color: $darkColor;
+   letter-spacing: toRem(0.68);
+   @include adaptiveValue("font-size", 36, 26);
+   line-height: 1.1;
+   display: flex;
+   align-items: flex-start;
+   gap: toEm(20, 36);
+   &::before {
+      content: "";
+      border-radius: toRem(10);
+      background-color: $orangeColor;
+      flex: 0 0 toRem(6);
+      margin-top: toEm(1, 36);
+      width: toRem(6);
+      height: toEm(30, 36);
+   }
+   &--margin {
+      &:not(:last-child) {
+         @include adaptiveValue("margin-bottom", 70, 20);
+      }
+   }
+}
+// Product Preview Cart
+.item-product {
+   position: relative;
+   display: grid;
+   gap: toRem(30);
+   &--category {
+      gap: toRem(25);
+   }
+   // .item-product__picture-link
+   &__picture-link {
+      display: block;
+   }
+   // .item-product__image
+   &__image {
+      aspect-ratio: 282 / 370;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: toRem(10);
+      .item-product--category & {
+         aspect-ratio: 270 / 393;
+      }
+      transition: transform 0.3s;
+      @media (any-hover: hover) {
+         &:hover {
+            transform: scale(0.95);
+         }
+      }
+   }
+   // .item-product__body
+   &__body {
+      display: grid;
+      grid-template: auto auto / auto auto;
+      row-gap: toRem(10);
+      column-gap: toRem(35);
+   }
+   // .item-product__title
+   &__title {
+      grid-column: 1 / 3;
+      font-weight: 600;
+      color: $darkColor;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+
+      min-width: 0;
+
+      .item-product--category & {
+         font-size: toRem(17);
+         font-weight: 700;
+      }
+   }
+   // .item-product__label
+   &__label {
+      grid-column: 1/1;
+      font-size: toRem(14);
+      font-weight: 500;
+   }
+   &__price {
+      // align-self: center;
+      // grid-column: 2/2;
+   }
+   // .item-product__price
+   &__price-old,
+   &__price {
+      align-self: center;
+      border-radius: toRem(8);
+      background-color: $liteColor;
+      padding: toRem(10) toRem(20);
+      font-weight: 700;
+      font-size: toRem(14);
+      color: $darkColor;
+   }
+   &__price-old {
+      color: $mainColor;
+      text-decoration: line-through;
+   }
+   // .item-product__favorite
+   &__favorite {
+      position: absolute;
+      top: toRem(26);
+      right: toRem(20);
+      width: toRem(32);
+      height: toRem(32);
+      z-index: 5;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &::before {
+         transition: color 0.3s;
+      }
+      &--active {
+         color: red;
+      }
+      @media (any-hover: hover) {
+         &:hover {
+            color: red;
+         }
+      }
+   }
+}
+// Button
+.button {
+   font-family: "Causten";
+   background-color: $orangeColor;
+   padding: toRem(16) toRem(20);
+   font-size: toRem(18);
+   font-weight: 500;
+   color: #fff;
+   line-height: 1.22222222;
+   text-align: center;
+   border-radius: toRem(8);
+   transition: all 0.3s;
+   @media (any-hover: hover) {
+      &:hover {
+         background-color: #6620c1;
+         box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
+      }
+      &:focus {
+         background-color: #6620c1;
+      }
+      &:disabled {
+         background-color: #eaeaea;
+         cursor: default;
+         color: #807d7e;
+      }
+   }
+   &--border {
+      color: $darkColor;
+      background-color: transparent;
+      border: toRem(1) solid $darkColor;
+      @media (any-hover: hover) {
+         &:hover {
+            color: $orangeColor;
+            background-color: #fff;
+            box-shadow: none;
+         }
+         &:focus {
+            background-color: #fff;
+            color: $orangeColor;
+            border: toRem(1) solid $orangeColor;
+         }
+         &:disabled {
+            background-color: #eaeaea;
+            cursor: default;
+            color: #807d7e;
+         }
+      }
+   }
+   &--white {
+      background-color: #fff;
+      color: $darkColor;
+      @media (any-hover: hover) {
+         &:hover {
+            color: #fff;
+            background-color: $orangeColor;
+         }
+         &:focus {
+            color: #fff;
+            background-color: $orangeColor;
+            box-shadow: none;
+         }
+         &:disabled {
+            background-color: #eaeaea;
+            cursor: default;
+            color: #807d7e;
+         }
+      }
+   }
+}
+// Rating
+.rating {
+   display: inline-flex;
+   gap: toRem(15);
+   align-items: center;
+   // .rating__items
+   &__items {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: toRem(7);
+      height: toRem(20);
+      .rating--set & {
+         @media (any-hover: hover) {
+            &:hover {
+               .rating__item {
+                  background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
+               }
+            }
+         }
+      }
+   }
+   // .rating__item
+   &__item {
+      flex: 0 0 toRem(20);
+      width: toRem(20);
+      position: relative;
+      background: url("../img/icons/star.svg") 0 0 / toRem(20) no-repeat;
+      &.active {
+         background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
+      }
+      span {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 0%;
+         height: toRem(20);
+         background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
+      }
+      &:not(:last-child) {
+         &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: toRem(7);
+            transform: translateX(100%);
+         }
+      }
+      .rating--set & {
+         @media (any-hover: hover) {
+            &:hover {
+               ~ .rating__item {
+                  background: url("../img/icons/star.svg") 0 0 / toRem(20) no-repeat;
+                  span {
+                     display: none;
+                  }
+               }
+            }
+         }
+      }
+   }
+   // .rating__input
+   &__input {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      opacity: 0;
+      .rating--set & {
+         cursor: pointer;
+      }
+   }
+   // .rating__value
+   &__value {
+      font-weight: 500;
+      font-size: toRem(18);
+   }
+}
