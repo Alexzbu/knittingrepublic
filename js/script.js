@@ -8,6 +8,11 @@ function documentActions(e) {
 	if (targetElement.closest('.icon-menu')) {
 		document.body.classList.toggle('menu-open');
 	}
+	if (targetElement.closest('.menu__link')) {
+		if (document.querySelector('.menu-open')) {
+			document.body.classList.toggle('menu-open');
+		}
+	}
 }
 
 // Sliders
@@ -79,7 +84,7 @@ if (reviewsSlider) {
 		// autoHeight: true,
 		speed: 800,
 		spaceBetween: 23,
-		slidesPerView: 3,
+		slidesPerView: 2,
 		// If we need pagination
 		pagination: {
 			el: '.reviews__pages',
@@ -96,7 +101,7 @@ if (reviewsSlider) {
 				spaceBetween: 15
 			},
 			991: {
-				slidesPerView: 3,
+				slidesPerView: 2,
 				spaceBetween: 23,
 			}
 		}

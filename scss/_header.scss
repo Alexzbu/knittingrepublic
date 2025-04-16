@@ -55,14 +55,14 @@
 
 .logo {
    display: flex;
+   z-index: 4;
    // .logo__image
 
    &__image {
       width: toRem(60);
-      height: toRem(80);
+      @include adaptiveValue("width", 60, 40);
       aspect-ratio: 60 / 80;
       position: relative;
-      z-index: 4;
    }
 
    // .logo__content
@@ -80,7 +80,7 @@
       font-family: "Merriweather";
       font-style: italic;
       font-weight: 700;
-      font-size: toRem(36);
+      @include adaptiveValue("font-size", 36, 20);
    }
 
    // .logo__subtitle
@@ -91,6 +91,7 @@
 
 .menu {
    flex-grow: 1;
+   padding-left: toRem(30);
    // .menu__icon
    &__icon {
    }
@@ -142,6 +143,57 @@
       }
       @media (max-width: toEm(767.98)) {
          font-size: toRem(32);
+      }
+   }
+}
+
+//Burger Icon
+.icon-menu {
+   display: none;
+   @media (max-width: toEm(767.98)) {
+      display: block;
+      position: relative;
+      width: toRem(30);
+      height: toRem(18);
+      z-index: 5;
+      @media (any-hover: none) {
+         cursor: default;
+      }
+      span,
+      &::before,
+      &::after {
+         content: "";
+         transition: all 0.3s ease 0s;
+         right: 0;
+         position: absolute;
+         width: 100%;
+         height: toRem(2);
+         background-color: #000;
+      }
+      &::before {
+         top: 0;
+      }
+      &::after {
+         bottom: 0;
+      }
+      span {
+         top: calc(50% - toRem(1));
+      }
+      .menu-open & {
+         span {
+            width: 0;
+         }
+         &::before,
+         &::after {
+         }
+         &::before {
+            top: calc(50% - toRem(1));
+            transform: rotate(-45deg);
+         }
+         &::after {
+            bottom: calc(50% - toRem(1));
+            transform: rotate(45deg);
+         }
       }
    }
 }
