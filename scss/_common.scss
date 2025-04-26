@@ -168,11 +168,11 @@
    transition: all 0.3s;
    @media (any-hover: hover) {
       &:hover {
-         background-color: #6620c1;
+         background-color: $hoverColor;
          box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
       }
       &:focus {
-         background-color: #6620c1;
+         background-color: $hoverColor;
       }
       &:disabled {
          background-color: #eaeaea;
@@ -298,5 +298,69 @@
    &__value {
       font-weight: 500;
       font-size: toRem(18);
+   }
+}
+// Tabs
+.tabs {
+   // .tabs__navigation
+   &__navigation {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: toRem(30);
+      row-gap: toRem(15);
+      align-items: flex-start;
+   }
+   // .tabs__item
+   &__item {
+   }
+   // .tabs__button
+   &__button {
+      font-size: toRem(18);
+      display: flex;
+      gap: toRem(15);
+      align-items: center;
+      line-height: 120%;
+      position: relative;
+      padding-bottom: toRem(18);
+      transition: all 0.3s;
+      @media (any-hover: hover) {
+         &:hover {
+            color: $darkColor;
+         }
+      }
+      .active & {
+         font-weight: 500;
+         color: $darkColor;
+         &::after {
+            content: "";
+            width: 50%;
+            height: toRem(1);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $darkColor;
+         }
+      }
+   }
+   // .tabs__comment-info
+   &__comment-info {
+      background-color: $mainColor;
+      border-radius: toRem(8);
+      padding: toRem(4) toRem(6);
+      font-size: toRem(10);
+      line-height: 1;
+      color: #fff;
+   }
+   // .tabs__faq-info
+   &__faq-info {
+      @extend .tabs__comment-info;
+      background-color: $darkColor;
+   }
+   // .tabs__body
+   &__body {
+      padding-top: toRem(30);
+   }
+   // .tabs__element
+   &__element {
    }
 }

@@ -10,6 +10,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 $mainColor: #807d7e;
 $darkColor: #3c4242;
 $orangeColor: #ff7a49;
+$hoverColor: #fd5b20;
 $liteColor: #f6f6f6;
 
 @import "_functions.scss";
@@ -35,9 +36,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
-	@media (max-width: toEm(540)) {
-		padding-bottom: toRem(75);
-	}
 }
 .wrapper > main {
 	flex-grow: 1;
@@ -65,3 +63,4 @@ body {
 
 // Сторінки
 @import "_home.scss";
+@import "_product.scss";
