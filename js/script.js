@@ -13,6 +13,13 @@ function documentActions(e) {
 			document.body.classList.toggle('menu-open');
 		}
 	}
+	if (targetElement.closest('.rating__input')) {
+		const currentElement = targetElement.closest('.rating__input');
+		const rating = currentElement.closest('.rating');
+		if (rating.classList.contains('rating--set')) {
+			starRatingGet(rating, currentElement);
+		}
+	}
 	if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
 		const valueElement = targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]');
 		let value = parseInt(valueElement.value);
@@ -61,45 +68,6 @@ if (heroSlider) {
 		},
 	});
 }
-const newSlider = document.querySelector('.new');
-if (newSlider) {
-	new Swiper('.new__slider', {
-		// Optional parameters
-		loop: true,
-		autoHeight: true,
-		speed: 800,
-		spaceBetween: 38,
-		slidesPerView: 4,
-		// Navigation arrows
-		navigation: {
-			nextEl: '.new__arrow--right',
-			prevEl: '.new__arrow--left',
-		},
-
-		// Responsive breakpoints
-		breakpoints: {
-			// when window width is >= 320px
-			320: {
-				slidesPerView: 1.5,
-				spaceBetween: 15
-			},
-			480: {
-				slidesPerView: 2,
-				spaceBetween: 15
-			},
-			// when window width is >= 480px
-			650: {
-				slidesPerView: 3,
-				spaceBetween: 25
-			},
-			// when window width is >= 640px
-			991: {
-				slidesPerView: 4,
-				spaceBetween: 38
-			}
-		}
-	});
-}
 const reviewsSlider = document.querySelector('.reviews');
 if (reviewsSlider) {
 	new Swiper('.reviews__slider', {
@@ -131,67 +99,6 @@ if (reviewsSlider) {
 		}
 	});
 }
-const mainProduct = document.querySelector('.main-product');
-if (mainProduct) {
-	const mainProductSliderImages = document.querySelectorAll('.main-product__slider img');
-	let mainProductThumbSlider;
-
-	if (mainProductSliderImages.length) {
-		const productImagesBlock = document.querySelector('.main-product__images');
-		let mainProductThumbSliderTemplate = `<div class="main-product__thumb-slider thumb-slider">`
-		mainProductThumbSliderTemplate += `<div class="thumb-slider__slider swiper">`
-		mainProductThumbSliderTemplate += `<div class="thumb-slider__wrapper swiper-wrapper">`
-		mainProductSliderImages.forEach(mainProductSliderImage => {
-			const srcImage = mainProductSliderImage.getAttribute('src').replace('/slider/', '/slider/thumbs/');
-			mainProductThumbSliderTemplate += `<div class="thumb-slider__slide swiper-slide">
-				<img src="${srcImage}" class="thumb-slider__image" alt="Image">
-			</div>`
-		});
-		mainProductThumbSliderTemplate += `</div>`
-		mainProductThumbSliderTemplate += `</div>`
-		mainProductThumbSliderTemplate += `<div class="thumb-slider__arrows">`
-		mainProductThumbSliderTemplate += `
-			<button type="button" class="thumb-slider__arrow thumb-slider__arrow--up _icon-ch-up"></button>
-			<button type="button" class="thumb-slider__arrow thumb-slider__arrow--down _icon-ch-down"></button>
-		`
-		mainProductThumbSliderTemplate += `</div>`
-		mainProductThumbSliderTemplate += `</div>`
-
-		productImagesBlock.insertAdjacentHTML("afterbegin", mainProductThumbSliderTemplate)
-
-		mainProductThumbSlider = new Swiper('.thumb-slider__slider', {
-			// Optional parameters
-			loop: true,
-			direction: "vertical",
-			spaceBetween: 20,
-			// autoHeight: true,
-			speed: 800,
-			slidesPerView: 3,
-		});
-	}
-
-	const mainProductSlider = new Swiper('.main-product__slider', {
-		// Optional parameters
-		loop: true,
-		// direction: "vertical",
-		// autoHeight: true,
-		// Navigation arrows
-		navigation: {
-			nextEl: '.thumb-slider__arrow--down',
-			prevEl: '.thumb-slider__arrow--up',
-		},
-		keyboard: {
-			enabled: true,
-		},
-		speed: 800,
-		spaceBetween: 0,
-		slidesPerView: 1,
-		thumbs: {
-			swiper: mainProductThumbSlider
-		},
-	});
-
-}
 
 // Tabs
 function setTab(tabElement) {
@@ -211,6 +118,39 @@ function setTab(tabElement) {
 
 	tabsElements[currentButtonIndex].hidden = false;
 
+}
+
+// Rating
+const ratings = document.querySelectorAll('[data-rating]')
+if (ratings) {
+	ratings.forEach(rating => {
+		const currentValue = +rating.dataset.rating;
+		currentValue ? starRatingSet(rating, currentValue) : null;
+	});
+}
+function starRatingGet(rating, currentElement) {
+	const ratingValue = +currentElement.value;
+	// Тут відправка оцінки (ratingValue) на бекенд...
+	// Уявімо, що ми отримали середню оцінку 3.2
+	const resultRating = 3.2;
+	starRatingSet(rating, resultRating);
+}
+function starRatingSet(rating, value) {
+	const ratingItems = rating.querySelectorAll('.rating__item');
+	const resultFullItems = parseInt(value);
+	const resultPartItem = value - resultFullItems;
+
+	ratingItems.forEach((ratingItem, index) => {
+		ratingItem.classList.remove('active');
+		ratingItem.querySelector('span') ? ratingItems[index].querySelector('span').remove() : null;
+
+		if (index <= (resultFullItems - 1)) {
+			ratingItem.classList.add('active');
+		}
+		if (index === resultFullItems && resultPartItem) {
+			ratingItem.insertAdjacentHTML("beforeend", `<span style="width:${resultPartItem * 100}%"></span>`)
+		}
+	});
 }
 
 function setNewItem(currentElement) {

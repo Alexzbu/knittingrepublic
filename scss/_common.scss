@@ -100,7 +100,7 @@
       color: $darkColor;
    }
    &__price-old {
-      color: $mainColor;
+      color: #e03d3d;
       text-decoration: line-through;
    }
    // .item-product__favorite
@@ -249,7 +249,7 @@
       flex: 0 0 toRem(20);
       width: toRem(20);
       position: relative;
-      background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
+      background: url("../img/icons/star.svg") 0 0 / toRem(20) no-repeat;
       &.active {
          background: url("../img/icons/star-active.svg") 0 0 / toRem(20) no-repeat;
       }
@@ -359,6 +359,8 @@
    // .tabs__body
    &__body {
       padding-top: toRem(30);
+      padding-right: toRem(10);
+      padding-bottom: toRem(10);
    }
    // .tabs__element
    &__element {
