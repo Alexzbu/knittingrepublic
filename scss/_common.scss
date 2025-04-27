@@ -97,10 +97,9 @@
       padding: toRem(10) toRem(20);
       font-weight: 700;
       font-size: toRem(14);
-      color: $darkColor;
    }
    &__price-old {
-      color: #e03d3d;
+      opacity: 0.7;
       text-decoration: line-through;
    }
    // .item-product__favorite

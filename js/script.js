@@ -130,10 +130,7 @@ if (ratings) {
 }
 function starRatingGet(rating, currentElement) {
 	const ratingValue = +currentElement.value;
-	// Тут відправка оцінки (ratingValue) на бекенд...
-	// Уявімо, що ми отримали середню оцінку 3.2
-	const resultRating = 3.2;
-	starRatingSet(rating, resultRating);
+	starRatingSet(rating, ratingValue);
 }
 function starRatingSet(rating, value) {
 	const ratingItems = rating.querySelectorAll('.rating__item');

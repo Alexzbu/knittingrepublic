@@ -321,10 +321,9 @@ textarea {
   padding: 0.625rem 1.25rem;
   font-weight: 700;
   font-size: 0.875rem;
-  color: #3c4242;
 }
 .item-product__price-old {
-  color: #e03d3d;
+  opacity: 0.7;
   text-decoration: line-through;
 }
 .item-product__favorite {
@@ -2236,7 +2235,8 @@ body.menu-open {
 .main-product__price--old {
   font-size: 1.5625rem;
   text-decoration: line-through;
-  color: #e03d3d;
+  color: #807d7e;
+  opacity: 0.7;
 }
 .colors-product__title {
   font-size: 1.25rem;
