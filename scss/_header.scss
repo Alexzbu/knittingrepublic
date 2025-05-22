@@ -51,6 +51,29 @@
          padding-bottom: toRem(105);
       }
    }
+   // .header__form
+   &__search {
+      flex-basis: 21.532258%;
+      position: relative;
+      flex-grow: 1;
+      z-index: 4;
+      @media (max-width: toEm(767.98)) {
+      }
+   }
+   // .header__action
+   &__action {
+      position: relative;
+      z-index: 4;
+      // @media (max-width: toEm(540)) {
+      //    position: fixed;
+      //    left: 0;
+      //    bottom: 0;
+      //    width: 100%;
+      //    padding: toRem(15);
+      //    background-color: #fff;
+      //    border-top: toRem(1) solid #bebcbd;
+      // }
+   }
 }
 
 .logo {
@@ -80,17 +103,23 @@
       font-family: "Merriweather";
       font-style: italic;
       font-weight: 700;
-      @include adaptiveValue("font-size", 36, 20);
+      @include adaptiveValue("font-size", 36, 10);
+      @media (max-width: toEm(540)) {
+         display: none;
+      }
    }
 
    // .logo__subtitle
 
    &__subtitle {
+      @media (max-width: toEm(540)) {
+         display: none;
+      }
    }
 }
 
 .menu {
-   flex-grow: 1;
+   // flex-grow: 1;
    padding-left: toRem(30);
    // .menu__icon
    &__icon {
@@ -118,7 +147,7 @@
    }
    // .menu__link
    &__link {
-      font-size: toRem(20);
+      @include adaptiveValue("font-size", 20, 16, 0, $containerWidth, 767.98);
       font-weight: 500;
       position: relative;
 
@@ -147,7 +176,90 @@
       }
    }
 }
+.search-form {
+   border-radius: toRem(8);
+   background-color: #eeeeee;
+   position: relative;
+   padding-left: toRem(44);
+   // .search-form__input
+   &__input {
+      padding-right: toRem(15);
+      height: toRem(44);
+      color: $darkColor;
+      background-color: transparent;
+      border-bottom: transparent;
+      transition: border-bottom 0.3s;
+      &::placeholder {
+         color: $mainColor;
+         transition: opacity 0.3s;
+      }
+      &:focus {
+         outline: none;
+         border-bottom: 1px solid $hoverColor;
+         &::placeholder {
+            opacity: 0;
+         }
+      }
+   }
+   // .search-form__button
+   &__button {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: toRem(44);
+      height: toRem(44);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: color 0.3s;
+      @media (any-hover: hover) {
+         &:hover {
+            color: $hoverColor;
+         }
+      }
+   }
+}
+.action-header {
+   display: grid;
+   grid-auto-flow: column;
+   grid-auto-columns: 1fr;
+   gap: toRem(12);
+   // .action-header__item
+   &__item {
+      width: toRem(44);
+      height: toRem(44);
+      border-radius: toRem(8);
+      background-color: #eeeeee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+      @media (any-hover: hover) {
+         &:hover {
+            background-color: $hoverColor;
+            color: #fff;
+         }
+      }
+   }
+}
+._icon-cart {
+   position: relative;
+   span {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      top: 8px;
+      right: 5px;
 
+      width: toRem(13);
+      height: toRem(13);
+      background-color: rgb(159, 0, 0);
+      border-radius: 50%;
+      color: $liteColor;
+   }
+}
 //Burger Icon
 .icon-menu {
    display: none;
