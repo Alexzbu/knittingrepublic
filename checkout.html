@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Product</title>
+</head>
+
+<body>
+   <div class="wrapper">
+      <header class="header">
+         <div class="header__container">
+            <a href="#" class="header__logo logo">
+               <img class="logo__image" src="img/logo.png" alt="Image">
+               <div class="logo__content">
+                  <h1 class="logo__title">KnittingRepublic</h1>
+                  <span class="logo__subtitle">Пряжа Україна</span>
+               </div>
+            </a>
+            <div class="header__menu menu">
+               <nav class="menu__body">
+                  <ul class="menu__list">
+                     <li class="menu__item">
+                        <a href="#" class="menu__link menu__link--active">Магазин</a>
+                     </li>
+                     <li class="menu__item">
+                        <a href="#" class="menu__link">Кошик</a>
+                     </li>
+                     <li class="menu__item">
+                        <a href="#" class="menu__link">Новини</a>
+                     </li>
+                     <li class="menu__item">
+                        <a href="#" class="menu__link">Контакти</a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+            <button class="icon-menu"><span></span></button>
+         </div>
+      </header>
+      <main class="page">
+         <div class="page__checkout checkout">
+            <div class="checkout__container container">
+               <h1 class="checkout__title title">Оформлення замовлення</h1>
+               <div class="woocommerce">
+                  <div class="woocommerce-notices-wrapper"></div>
+                  <div class="woocommerce-notices-wrapper"></div>
+                  <form name="checkout" method="post" class="checkout woocommerce-checkout"
+                     action="http://www.knitting-republic/checkout/" enctype="multipart/form-data"
+                     aria-label="Оформлення замовлення" novalidate="novalidate">
+                     <div class="col2-set" id="customer_details">
+                        <div class="col-1">
+                           <div class="woocommerce-billing-fields">
+                              <h3>Платіжні дані</h3>
+                              <div class="woocommerce-billing-fields__field-wrapper">
+                                 <p class="form-row form-row-first validate-required" id="billing_first_name_field"
+                                    data-priority="10"><label for="billing_first_name"
+                                       class="required_field">Ім'я&nbsp;<span class="required"
+                                          aria-hidden="true">*</span></label><span
+                                       class="woocommerce-input-wrapper"><input type="text" class="input-text "
+                                          name="billing_first_name" id="billing_first_name" placeholder="" value=""
+                                          aria-required="true" autocomplete="given-name"></span></p>
+                                 <p class="form-row form-row-last validate-required" id="billing_last_name_field"
+                                    data-priority="20"><label for="billing_last_name"
+                                       class="required_field">Прізвище&nbsp;<span class="required"
+                                          aria-hidden="true">*</span></label><span
+                                       class="woocommerce-input-wrapper"><input type="text" class="input-text "
+                                          name="billing_last_name" id="billing_last_name" placeholder="" value=""
+                                          aria-required="true" autocomplete="family-name"></span></p>
+                                 <p class="form-row form-row-wide address-field update_totals_on_change validate-required"
+                                    id="billing_country_field" data-priority="40"><label for="billing_country"
+                                       class="required_field">Країна / Регіон&nbsp;<span class="required"
+                                          aria-hidden="true">*</span></label><span
+                                       class="woocommerce-input-wrapper"><strong>Україна</strong><input type="hidden"
+                                          name="billing_country" id="billing_country" value="UA" aria-required="true"
+                                          autocomplete="country" class="country_to_state" readonly="readonly"></span>
+                                 </p>
+                                 <p class="form-row form-row-wide validate-required validate-phone"
+                                    id="billing_phone_field" data-priority="100"><label for="billing_phone"
+                                       class="required_field">Телефон&nbsp;<span class="required"
+                                          aria-hidden="true">*</span></label><span
+                                       class="woocommerce-input-wrapper"><input type="tel" class="input-text "
+                                          name="billing_phone" id="billing_phone" placeholder="" value=""
+                                          aria-required="true" autocomplete="tel"></span></p>
+                                 <p class="form-row form-row-wide validate-required validate-email"
+                                    id="billing_email_field" data-priority="110"><label for="billing_email"
+                                       class="required_field">E-mail
+                                       адреса&nbsp;<span class="required" aria-hidden="true">*</span></label><span
+                                       class="woocommerce-input-wrapper"><input type="email" class="input-text "
+                                          name="billing_email" id="billing_email" placeholder=""
+                                          value="alexzbu@gmail.com" aria-required="true" autocomplete="email"></span>
+
+                                 </p>
+                                 <p class="form-row " id="billing_nova_poshta_region_field" data-priority="120"><label
+                                       for="billing_nova_poshta_region" class="">Регіон&nbsp;<span
+                                          class="optional"><span class="asterisk-color">*</span></span></label><span
+                                       class="woocommerce-input-wrapper"><select name="billing_nova_poshta_region"
+                                          id="billing_nova_poshta_region" class="select select2-hidden-accessible"
+                                          data-allow_clear="true" data-placeholder="Обрати область" tabindex="-1"
+                                          aria-hidden="true">
+                                          <option value="" selected="selected">Обрати область</option>
+                                          <option value="71508128-9b87-11de-822f-000c2965ae0e">АРК</option>
+                                       </select><span class="select2 select2-container select2-container--default"
+                                          dir="ltr" style="width: 137px;"><span class="selection"><span
+                                                class="select2-selection select2-selection--single" aria-haspopup="true"
+                                                aria-expanded="false" tabindex="0"
+                                                aria-labelledby="select2-billing_nova_poshta_region-container"
+                                                role="combobox"><span class="select2-selection__rendered"
+                                                   id="select2-billing_nova_poshta_region-container" role="textbox"
+                                                   aria-readonly="true"><span
+                                                      class="select2-selection__placeholder">Обрати
+                                                      область</span></span><span class="select2-selection__arrow"
+                                                   role="presentation"><b
+                                                      role="presentation"></b></span></span></span><span
+                                             class="dropdown-wrapper" aria-hidden="true"></span></span></span>
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-2">
+                           <div class="woocommerce-shipping-fields">
+                              <h3 id="ship-to-different-address">
+                                 <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                    <input id="ship-to-different-address-checkbox"
+                                       class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox"
+                                       type="checkbox" name="ship_to_different_address" value="1"> <span>Доставити на
+                                       іншу
+                                       адресу?</span>
+                                 </label>
+                              </h3>
+                              <div class="shipping_address" style="display: none;">
+                                 <div class="woocommerce-shipping-fields__field-wrapper">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="woocommerce-additional-fields">
+                              <div class="woocommerce-additional-fields__field-wrapper">
+                                 <p class="form-row notes" id="order_comments_field" data-priority=""><label
+                                       for="order_comments" class="">Нотатки до замовлення&nbsp;<span
+                                          class="optional">(необов'язково)</span></label><span
+                                       class="woocommerce-input-wrapper"><textarea name="order_comments"
+                                          class="input-text " id="order_comments"
+                                          placeholder="Нотатки до вашого замовлення, наприклад спеціальні нотатки для доставки."
+                                          rows="2" cols="5"></textarea></span></p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <h3 id="order_review_heading">Ваше замовлення</h3>
+                     <div id="order_review" class="woocommerce-checkout-review-order">
+                        <table class="shop_table woocommerce-checkout-review-order-table">
+                           <thead>
+                              <tr>
+                                 <th class="product-name">Товар</th>
+                                 <th class="product-total">Проміжний підсумок</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="cart_item">
+                                 <td class="product-name">
+                                    Drops Safran - 56-Пудра&nbsp; <strong class="product-quantity">×&nbsp;2</strong>
+                                 </td>
+                                 <td class="product-total">
+                                    <span class="woocommerce-Price-amount amount"><bdi>170<span
+                                             class="woocommerce-Price-currencySymbol">₴</span></bdi></span>
+                                 </td>
+                              </tr>
+                           </tbody>
+                           <tfoot>
+                              <tr class="cart-subtotal">
+                                 <th>Проміжний підсумок</th>
+                                 <td><span class="woocommerce-Price-amount amount"><bdi>170<span
+                                             class="woocommerce-Price-currencySymbol">₴</span></bdi></span></td>
+                              </tr>
+                              <tr class="woocommerce-shipping-totals shipping">
+                                 <th>Доставка</th>
+                                 <td data-title="Доставка">
+                                    <ul id="shipping_method" class="woocommerce-shipping-methods">
+                                       <li>
+                                          <input type="hidden" name="shipping_method[0]" data-index="0"
+                                             id="shipping_method_0_nova_poshta_shipping_method"
+                                             value="nova_poshta_shipping_method" class="shipping_method"><label
+                                             for="shipping_method_0_nova_poshta_shipping_method">Нова Пошта</label>
+                                       </li>
+                                    </ul>
+                                 </td>
+                              </tr>
+                              <tr class="order-total">
+                                 <th>Загалом</th>
+                                 <td><strong><span class="woocommerce-Price-amount amount"><bdi>170<span
+                                                class="woocommerce-Price-currencySymbol">₴</span></bdi></span></strong>
+                                 </td>
+                              </tr>
+                           </tfoot>
+                        </table>
+                        <div id="payment" class="woocommerce-checkout-payment">
+                           <ul class="wc_payment_methods payment_methods methods">
+                              <li class="wc_payment_method payment_method_cod">
+                                 <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method"
+                                    value="cod" checked="checked" data-order_button_text="">
+                                 <label for="payment_method_cod">
+                                    Оплата при отриманні з передоплатою 200 грн. </label>
+                              </li>
+                              <li class="wc_payment_method payment_method_mono_gateway">
+                                 <input id="payment_method_mono_gateway" type="radio" class="input-radio"
+                                    name="payment_method" value="mono_gateway" data-order_button_text="">
+
+                                 <label for="payment_method_mono_gateway">
+                                    Оплата карткою, Apple Pay, Google Pay <img
+                                       src="http://www.knitting-republic/wp-content/plugins/monopay/assets/images/plata.svg"
+                                       alt="plata"> </label>
+                              </li>
+                           </ul>
+                           <div class="form-row place-order">
+                              <noscript>
+                                 Оскільки ваш браузер не підтримує JavaScript (або він вимкнений), будь ласка, натисніть
+                                 кнопку <em>Оновлення підсумку</em> перед розміщенням замовлення. Інакше ви можете
+                                 отримати
+                                 рахунок на більшу суму, ніж очікуєте, якщо не зробите цього. <br /><button
+                                    type="submit" class="button alt" name="woocommerce_checkout_update_totals"
+                                    value="Оновити підсумки">Оновити підсумки</button>
+                              </noscript>
+                              <div class="woocommerce-terms-and-conditions-wrapper">
+                                 <div class="woocommerce-privacy-policy-text">
+                                    <p>Доставка по Україні службою "Нова Пошта". Оплату за доставку здійснює покупець.
+                                       Повні
+                                       правила замовлення та повертання товару, Ви можете прочитати за посиланням <a
+                                          href="http://www.knitting-republic/refund_returns/">[Замовлення та
+                                          повернення]</a>.
+                                       Нажимаючи кнопку "Підтвердити замовлення" Ви погоджуєтесь з нашими правилами
+                                       "Замовлення та повернення".</p>
+                                 </div>
+                              </div>
+                              <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
+                                 id="place_order" value="Підтвердити замовлення"
+                                 data-value="Підтвердити замовлення">Підтвердити замовлення</button>
+
+                              <input type="hidden" id="woocommerce-process-checkout-nonce"
+                                 name="woocommerce-process-checkout-nonce" value="fa4a8139c2"><input type="hidden"
+                                 name="_wp_http_referer" value="/?wc-ajax=update_order_review">
+                           </div>
+                        </div>
+                     </div>
+                     <input type="hidden" name="npregionref" location="billing" value=""><input type="hidden"
+                        name="npregionname" location="billing" value="undefined">
+                  </form>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+         <div class="footer__container">
+            <div class="footer__menu menu-footer">
+               <div class="menu-footer__block">
+                  <h5 class="menu-footer__title">Knitting Republic</h5>
+                  <ul class="menu-footer__list">
+                     <li class="menu-footer__item">
+                        <a href="#" class="menu-footer__link">Політика повернення</a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="menu-footer__block">
+                  <h5 class="menu-footer__title">Наша адреса</h5>
+                  <ul class="menu-footer__list">
+                     <li class="menu-footer__item">
+                        <a href="#" class="menu-footer__link">м.Тернопіль, вул. Торговиця 11</a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="menu-footer__block">
+                  <h5 class="menu-footer__title">Наш телефон</h5>
+                  <ul class="menu-footer__list">
+                     <li class="menu-footer__item">
+                        <a href="tel:0632990545" class="menu-footer__link">+380-63-299-0545</a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="menu-footer__block">
+                  <h5 class="menu-footer__title">E-Mail</h5>
+                  <ul class="menu-footer__list">
+                     <li class="menu-footer__item">
+                        <a href="mailto:support@euphoria.in" class="menu-footer__link">den@knittingrepublic.com.ua</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="footer__body">
+               <div class="footer__social social-footer">
+                  <ul class="social-footer__list">
+                     <li class="social-footer__item">
+                        <a target="_blank" href="https://www.facebook.com/knittingrepublic"
+                           class="social-footer__link _icon-s-facebook"></a>
+                     </li>
+                     <li class="social-footer__item">
+                        <a target="_blank" href="https://www.instagram.com/knittingrepublic"
+                           class="social-footer__link _icon-s-instagram"></a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="footer__cards cards-footer">
+                  <div class="cards-footer__items">
+                     <img src="img/icons/mastercard.svg" alt="mastercard">
+                     <img src="img/icons/visa.svg" alt="visa">
+                     <img src="img/icons/applepay.svg" alt="visa">
+                     <img src="img/icons/googlepay.svg" alt="visa">
+                  </div>
+               </div>
+            </div>
+            <div class="footer__copy">
+               Copyright © 2025.
+            </div>
+         </div>
+      </footer>
+   </div>
+   <script src="js/script.js"></script>
+</body>
+
+</html>

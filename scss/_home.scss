@@ -163,6 +163,7 @@
       color: $darkColor;
       padding: toRem(10) toRem(15);
       border-radius: toRem(5);
+      transition: background-color 0.3s;
       @media (any-hover: hover) {
          &:hover {
             background-color: $orangeColor;

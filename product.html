@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<title>Product</title>
 </head>
 
@@ -44,7 +45,7 @@
 			<div class="page__product product">
 				<section class="product__main main-product">
 					<div class="main-product__container">
-						<img src="img/products/2.jpeg" class="main-product__image" alt="Image">
+						<img id="mainProductImage" src="img/products/main-3.jpg" class="main-product__image" alt="Image">
 						<form action="#" class="main-product__body">
 							<h1 class="main-product__title">Drops Belle</h1>
 							<div class="main-product__rating-comments">
@@ -76,25 +77,33 @@
 								<div class="main-product__price main-product__price--old">110 грн.</div>
 							</div>
 							<div class="main-product__colors colors-product">
-								<h5 class="colors-product__title">Виберіть колір:</h5>
+								<h5 class="colors-product__title">Виберіть колір: <span id="colorName">01-Drops
+										Nord-Білий</span></h5>
 								<div class="colors-product__items">
-									<label style="--color:#8434e1" class="colors-product__item">
-										<input type="radio" value="#8434e1" class="colors-product__input" name="product-colors">
-									</label>
-									<label style="--color:#000000" class="colors-product__item">
-										<input type="radio" value="#8434e1" class="colors-product__input" name="product-colors">
-									</label>
-									<label style="--color:#F35528" class="colors-product__item">
-										<input type="radio" value="#8434e1" class="colors-product__input" name="product-colors">
-									</label>
-									<label style="--color:#F16F2B" class="colors-product__item">
-										<input type="radio" value="#8434e1" class="colors-product__input" name="product-colors">
-									</label>
-									<label style="--color:#345EFF" class="colors-product__item">
-										<input type="radio" value="#8434e1" class="colors-product__input" name="product-colors">
-									</label>
+									<div class="colors-product__item item item--text" data-stock="Є в наявності"
+										data-name="attribute_pa_drops-nord" data-attribute-value="01"
+										data-image="img/products/variable/01-4.jpg" alt="Image">
+										<div class="item__text">
+											<span>2,5 mm</span>
+										</div>
+									</div>
+									<div class="colors-product__item item item--text" data-stock="Є в наявності"
+										data-name="attribute_pa_drops-nord" data-attribute-value="01"
+										data-image="img/products/variable/01-4.jpg" alt="Image">
+										<div class="item__text">
+											<span>3,5 mm</span>
+										</div>
+									</div>
+									<div class="colors-product__item item item--text" data-stock="Є в наявності"
+										data-name="attribute_pa_drops-nord" data-attribute-value="01"
+										data-image="img/products/variable/01-4.jpg" alt="Image">
+										<div class="item__text">
+											<span>5 mm</span>
+										</div>
+									</div>
 								</div>
 							</div>
+							<div id="mainProductStock" class="main-product__stock">Є в наявності</div>
 							<div class="main-product__footer">
 								<div data-quantity class="quantity">
 									<button data-quantity-minus type="button"
@@ -227,6 +236,7 @@
 										</label>
 									</div>
 								</div>
+								<div class="g-recaptcha" data-sitekey="6LfOijQrAAAAAB67VUPy1aVP_RZd03gE__z9gTrx"></div>
 								<button class="rating__button button">Залишити відгук</button>
 							</form>
 						</div>

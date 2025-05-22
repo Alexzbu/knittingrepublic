@@ -5,6 +5,35 @@ document.addEventListener("click", documentActions);
 function documentActions(e) {
 	const targetElement = e.target;
 
+	if (targetElement.closest('.colors-product__item')) {
+		const currentElement = targetElement.closest('.colors-product__item');
+		document.querySelectorAll('.colors-product__item').forEach(i => i.classList.remove('active'));
+		currentElement.classList.add('active');
+
+		const newImage = currentElement.dataset.image;
+		document.getElementById('mainProductImage').src = newImage;
+
+		const productStock = currentElement.dataset.stock;
+		document.getElementById('mainProductStock').innerText = productStock;
+
+		const productColor = currentElement.dataset.name;
+		document.getElementById('colorName').innerText = productColor;
+
+		const productQuantity = currentElement.dataset.quantity;
+		const quantityElement = document.querySelector('[data-quantity-value]');
+		quantityElement.dataset.quantityMax = productQuantity;
+		quantityElement.value = Math.min(Number(quantityElement.value), Number(productQuantity));
+		quantityElement.style.color = "";
+
+		const variationInput = document.getElementById('variation_id');
+		const variationId = currentElement.dataset.variation_id
+		variationInput.value = variationId;
+		const addToCartBtn = document.querySelector('.main-product__button');
+		addToCartBtn
+		addToCartBtn.disabled = false;
+	}
+
+
 	if (targetElement.closest('.icon-menu')) {
 		document.body.classList.toggle('menu-open');
 	}
@@ -18,18 +47,23 @@ function documentActions(e) {
 		const rating = currentElement.closest('.rating');
 		if (rating.classList.contains('rating--set')) {
 			starRatingGet(rating, currentElement);
+			document.querySelector('.g-recaptcha').classList.add('visible');
 		}
 	}
 	if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
 		const valueElement = targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]');
+		const updateButton = document.querySelector('button[name="update_cart"]')
+		updateButton && (updateButton.disabled = false);
 		let value = parseInt(valueElement.value);
 		if (targetElement.hasAttribute('data-quantity-plus')) {
 			value++;
 			if (+valueElement.dataset.quantityMax && +valueElement.dataset.quantityMax < value) {
 				value = valueElement.dataset.quantityMax;
+				valueElement.style.color = "red"
 			}
 		} else {
 			--value;
+			valueElement.style.color = ""
 			if (+valueElement.dataset.quantityMin) {
 				if (+valueElement.dataset.quantityMin > value) {
 					value = valueElement.dataset.quantityMin;
@@ -150,9 +184,137 @@ function starRatingSet(rating, value) {
 	});
 }
 
-function setNewItem(currentElement) {
-	const buttons = Array.from(document.querySelectorAll('[addButton]'));
-	const currentButtonIndex = buttons.indexOf(currentElement);
-	const elements = Array.from(document.querySelectorAll('[addField]'));
-	elements[currentButtonIndex].classList.toggle('hidden')
+const oldQuantities = document.querySelectorAll('.input-text.qty.text');
+if (oldQuantities.length > 0) {
+	removeIconHandler()
+	quantityHandler(oldQuantities)
+
+	const observer = new MutationObserver((mutations, obs) => {
+		const target = document.querySelector('.input-text.qty.text');
+
+		if (target) {
+			const newQuantities = document.querySelectorAll('.input-text.qty.text');
+			removeIconHandler()
+			quantityHandler(newQuantities)
+		}
+	});
+
+	observer.observe(document.body, {
+		childList: true,
+		subtree: true
+	});
+}
+function removeIconHandler() {
+	const removeLinks = document.querySelectorAll('.remove');
+
+	removeLinks.forEach(link => {
+		link.innerText = '';
+		link.classList.add('_icon-trash');
+	});
+}
+
+function quantityHandler(data) {
+	document.querySelector('.woocommerce-shipping-calculator').innerHTML = '';
+
+	const quantities = document.querySelectorAll('td.product-quantity');
+
+	quantities.forEach((td, index) => {
+		const oldInput = data[index];
+		if (!oldInput) return;
+
+		td.innerHTML = `
+			<div data-quantity class="quantity">
+				<button data-quantity-minus type="button" class="quantity__button quantity__button--minus"></button>
+				<div class="quantity__input">
+					<input
+						id="${oldInput.id}"
+						data-quantity-value
+						data-quantity-max="${oldInput.max}" 
+						autocomplete="off" type="text" 
+						name="${oldInput.name}" 
+						value="${oldInput.value}">
+				</div>
+				<button data-quantity-plus type="button" class="quantity__button quantity__button--plus"></button>
+			</div>`;
+	});
+}
+const raitingButton = document.querySelector('.rating__button')
+if (raitingButton) {
+	raitingButton.disabled = true
+	formValidation();
+}
+const telInput = document.getElementById('billing_phone');
+if (telInput && !telInput.value) {
+	telInput.value = '+380';
+}
+
+let checkoutButton = document.getElementById('place_order');
+if (checkoutButton) {
+	setTimeout(() => {
+		checkoutButton = document.getElementById('place_order')
+		checkoutButton.disabled = true;
+	}, 3000);
+
+	formValidation();
+}
+
+function formValidation() {
+	const inputs = document.querySelectorAll('input');
+
+	inputs.forEach((input) => {
+		input.addEventListener('blur', checkInputs);
+		input.addEventListener('input', checkInputs);
+	});
+}
+
+function checkInputs(e) {
+	const targetElement = e.target;
+	let isValid = true;
+
+	if (targetElement.type === 'tel') {
+		const phonePattern = /^\+380\d{9}$/;
+		isValid = phonePattern.test(targetElement.value);
+	}
+
+	if (targetElement.type === 'email') {
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		isValid = emailPattern.test(targetElement.value);
+	}
+
+	if (targetElement.type === 'text') {
+		isValid = !!targetElement.value.trim();
+	}
+
+	targetElement.classList.toggle('invalid', !isValid);
+
+	validateForm();
+}
+
+function validateForm() {
+	const inputs = document.querySelectorAll('input');
+	const allValid = Array.from(inputs).every((input) => {
+		if (input.type === 'tel') {
+			return /^\+380\d{9}$/.test(input.value);
+		}
+		if (input.type === 'email') {
+			return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+		}
+		if (input.name === 'billing_first_name') {
+			return !!input.value.trim();
+		}
+		if (input.name === 'billing_last_name' || input.name === 'author') {
+			return !!input.value.trim();
+		}
+		if (input.type === 'radio') {
+			const group = document.getElementsByName(input.name);
+			return Array.from(group).some((radio) => radio.checked);
+		}
+		return true;
+	});
+	if (checkoutButton) {
+		checkoutButton.disabled = !allValid;
+	}
+	if (raitingButton) {
+		raitingButton.disabled = !allValid;
+	}
 }

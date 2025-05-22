@@ -113,7 +113,8 @@
       }
    }
    // .menu__item
-   &__item {
+   &__item.current-menu-item {
+      color: $orangeColor;
    }
    // .menu__link
    &__link {
