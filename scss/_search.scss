@@ -1,0 +1,14 @@
+.search {
+   @include adaptiveValue("padding-top", 30, 20);
+   @include adaptiveValue("padding-bottom", 30, 20);
+   // .search__container
+
+   &__container {
+   }
+
+   // .search__title
+
+   &__title {
+      margin-bottom: toRem(30);
+   }
+}
