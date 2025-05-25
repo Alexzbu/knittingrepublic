@@ -61,9 +61,31 @@ textarea:focus {
   border-color: $darkColor;
   outline: none;
 }
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .invalid,
 .invalid:focus {
   border: 2px solid red;
+  animation: shake 0.3s ease-in-out;
 }
 
 /* === Select2 Styles Override === */

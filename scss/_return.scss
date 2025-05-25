@@ -1,0 +1,37 @@
+.page {
+   // .page__return
+
+   &__return {
+      @include adaptiveValue("padding-top", 30, 20);
+      @include adaptiveValue("padding-bottom", 30, 20);
+   }
+
+   // .page__title
+
+   &__title {
+      @include adaptiveValue("font-size", 30, 20);
+      margin-bottom: toRem(20);
+   }
+
+   // .page__content
+
+   &__content {
+      > * {
+         line-height: 1.4;
+         margin-bottom: toRem(10);
+      }
+   }
+}
+.return {
+   // .return__container
+
+   &__container {
+   }
+}
+.title {
+}
+.wp-block-heading {
+}
+.has-medium-font-size {
+   @include adaptiveValue("font-size", 22, 18);
+}

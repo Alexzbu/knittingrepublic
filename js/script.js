@@ -263,7 +263,7 @@ function formValidation() {
 
 	inputs.forEach((input) => {
 		input.addEventListener('blur', checkInputs);
-		input.addEventListener('input', checkInputs);
+		input.addEventListener('input', validateForm);
 	});
 }
 

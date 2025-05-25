@@ -175,8 +175,9 @@
       }
       &:disabled {
          background-color: #eaeaea;
-         cursor: default;
+         cursor: not-allowed;
          color: #807d7e;
+         box-shadow: none;
       }
    }
    &--border {
