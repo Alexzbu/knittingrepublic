@@ -50,7 +50,7 @@ body {
 .page {
 	// .page__hero
 	&__hero {
-		@include adaptiveValue("margin-bottom", 130, 40);
+		@include adaptiveValue("margin-bottom", 70, 40);
 	}
 	&__products {
 		@include adaptiveValue("margin-bottom", 130, 40);
@@ -66,6 +66,7 @@ body {
 @import "_product.scss";
 @import "_cart.scss";
 @import "_checkout.scss";
+@import "_checkout-final.scss";
 @import "_search.scss";
 @import "_contacts.scss";
 @import "_return.scss";

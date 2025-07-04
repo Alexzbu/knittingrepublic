@@ -187,6 +187,9 @@
 	}
 	&--text {
 		flex-basis: toRem(80);
+		height: auto;
+		line-height: 1.2;
+		text-align: center;
 		@media (any-hover: hover) {
 			&:hover {
 				&::before {

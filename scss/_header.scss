@@ -254,12 +254,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 10px;
+      font-size: toRem(11);
       top: 8px;
       right: 5px;
 
-      width: toRem(13);
-      height: toRem(13);
+      width: toRem(15);
+      height: toRem(15);
       background-color: rgb(159, 0, 0);
       border-radius: 50%;
       color: $liteColor;

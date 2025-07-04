@@ -57,9 +57,10 @@
    // .item-product__body
    &__body {
       display: grid;
-      grid-template: auto auto / auto auto;
+      grid-template: auto auto / 1fr 1fr;
       row-gap: toRem(10);
-      column-gap: toRem(35);
+      // column-gap: toRem(35);
+      @include adaptiveValue("column-gap", 35, 10);
    }
    // .item-product__title
    &__title {
@@ -91,12 +92,16 @@
    // .item-product__price
    &__price-old,
    &__price {
+      width: 100%;
       text-align: center;
       border-radius: toRem(8);
       background-color: $liteColor;
-      padding: toRem(10) toRem(20);
       font-weight: 700;
-      font-size: toRem(14);
+      padding: toRem(10) toRem(5);
+      @include adaptiveValue("font-size", 14, 12);
+      @media (max-width: toEm(392)) {
+         font-size: toRem(16);
+      }
    }
    &__price-old {
       opacity: 0.7;
@@ -127,25 +132,24 @@
          }
       }
    }
+   &__sale,
+   &__new {
+      color: $liteColor;
+      font-size: toRem(25);
+      padding: toRem(5);
+      border-radius: toRem(5);
+   }
    &__sale {
       position: absolute;
-      top: toRem(10);
+      top: toRem(30);
       left: 0;
-      color: $liteColor;
       background-color: $orangeColor;
-      font-size: toRem(30);
-      padding: toRem(10);
-      border-radius: toRem(5);
    }
    &__new {
       position: absolute;
-      top: toRem(80);
+      top: toRem(70);
       left: 0;
-      color: $liteColor;
       background-color: rgb(0, 170, 0);
-      font-size: toRem(30);
-      padding: toRem(10);
-      border-radius: toRem(5);
    }
    &__rating {
       position: absolute;

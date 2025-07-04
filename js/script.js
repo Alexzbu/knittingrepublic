@@ -78,6 +78,12 @@ function documentActions(e) {
 		const currentElement = targetElement.closest('[data-tabs-button]');
 		setTab(currentElement);
 	}
+	if (targetElement.closest('.remove')) {
+		const valueElements = document.querySelectorAll('[data-quantity-value]')
+		if (valueElements.length === 1) {
+			document.querySelector('.cart-count').style.display = 'none';
+		}
+	}
 }
 
 // Sliders
@@ -196,6 +202,7 @@ if (oldQuantities.length > 0) {
 			const newQuantities = document.querySelectorAll('.input-text.qty.text');
 			removeIconHandler()
 			quantityHandler(newQuantities)
+			setCartAmount()
 		}
 	});
 
@@ -211,6 +218,16 @@ function removeIconHandler() {
 		link.innerText = '';
 		link.classList.add('_icon-trash');
 	});
+}
+
+function setCartAmount() {
+	const valueElements = document.querySelectorAll('[data-quantity-value]')
+	let amount = 0
+	valueElements.forEach((valueElement) => {
+		amount = amount + +valueElement.value
+
+	})
+	document.querySelector('.cart-count').innerText = amount;
 }
 
 function quantityHandler(data) {
@@ -252,8 +269,9 @@ let checkoutButton = document.getElementById('place_order');
 if (checkoutButton) {
 	setTimeout(() => {
 		checkoutButton = document.getElementById('place_order')
-		checkoutButton.disabled = true;
-	}, 3000);
+		// checkoutButton.disabled = true;
+		validateForm()
+	}, 2000);
 
 	formValidation();
 }
