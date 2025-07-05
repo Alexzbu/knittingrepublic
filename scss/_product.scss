@@ -218,6 +218,16 @@
 		align-items: center;
 		transition: all 0.3s;
 	}
+	&__new {
+		position: absolute;
+		top: toRem(-3);
+		right: toRem(-3);
+		font-size: toRem(9);
+		color: #fff;
+		background-color: green;
+		padding: toRem(2) toRem(3);
+		border-radius: toRem(8);
+	}
 }
 
 .quantity {

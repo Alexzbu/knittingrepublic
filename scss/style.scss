@@ -53,7 +53,7 @@ body {
 		@include adaptiveValue("margin-bottom", 70, 40);
 	}
 	&__products {
-		@include adaptiveValue("margin-bottom", 130, 40);
+		@include adaptiveValue("margin-bottom", 70, 40);
 	}
 	// .page__reviews
 	&__reviews {

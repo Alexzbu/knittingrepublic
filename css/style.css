@@ -270,6 +270,7 @@ textarea {
   gap: 1.5625rem;
 }
 .item-product__picture-link {
+  position: relative;
   display: block;
   overflow: hidden;
   border-radius: 0.625rem;
@@ -435,6 +436,16 @@ textarea {
   position: absolute;
   top: 4.375rem;
   left: 0;
+  background-color: rgb(0, 170, 0);
+}
+.item-product__new-colors {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  width: 100%;
+  color: #f6f6f6;
+  text-align: center;
+  padding: 0.3125rem;
   background-color: rgb(0, 170, 0);
 }
 .item-product__rating {
@@ -1470,7 +1481,7 @@ textarea {
       -ms-flex: 1 0 19.375rem;
           flex: 1 0 19.375rem;
   padding-right: 1.875rem;
-  justify-items: center;
+  text-align: center;
 }
 @media (min-width: 79.375em) {
   .menu-footer__title:not(:last-child) {
@@ -1669,18 +1680,18 @@ body.menu-open {
 }
 @media (min-width: 79.375em) {
   .page__products {
-    margin-bottom: 8.125rem;
+    margin-bottom: 4.375rem;
   }
 }
 @media (min-width: 20em) and (max-width: 79.375em) {
-  @supports (margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem )) {
+  @supports (margin-bottom: clamp( 2.5rem , 1.8684210526rem  +  3.1578947368vw , 4.375rem )) {
     .page__products {
-      margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem );
+      margin-bottom: clamp( 2.5rem , 1.8684210526rem  +  3.1578947368vw , 4.375rem );
     }
   }
-  @supports not (margin-bottom: clamp( 2.5rem , 0.6052631579rem  +  9.4736842105vw , 8.125rem )) {
+  @supports not (margin-bottom: clamp( 2.5rem , 1.8684210526rem  +  3.1578947368vw , 4.375rem )) {
     .page__products {
-      margin-bottom: calc(2.5rem + 5.625 * (100vw - 20rem) / 59.375);
+      margin-bottom: calc(2.5rem + 1.875 * (100vw - 20rem) / 59.375);
     }
   }
 }
@@ -2626,6 +2637,16 @@ body.menu-open {
           align-items: center;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+.item__new {
+  position: absolute;
+  top: -0.1875rem;
+  right: -0.1875rem;
+  font-size: 0.5625rem;
+  color: #fff;
+  background-color: green;
+  padding: 0.125rem 0.1875rem;
+  border-radius: 0.5rem;
 }
 
 .quantity {
